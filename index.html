@@ -6,6 +6,44 @@
   <title>Pastakun</title>
 </head>
 <body>
-  <h1>🍝</h1>
+  <input type="range" id="lever" min="0" max="1" value="0">
+  <pre id="bombpasta"></pre>
+
+    <script>
+        const bombpasta = document.getElementById('bombpasta');
+        const lever = document.getElementById('lever');
+        let bombstep = 0;
+        function animate() {
+            let text = '';
+            if(bombstep < 40){
+                if(lever.value === '0'){
+                    text += '_'.repeat(bombstep | 0);
+                    text += '💣';
+                    text += '_'.repeat(64 - (bombstep | 0));
+                }else{
+                    text += '_'.repeat(32);
+                    text += '🍝';
+                    text += '_'.repeat(32);
+                }
+                text += '\n';
+                if(lever.value === '1'){
+                    text += '_'.repeat(bombstep | 0);
+                    text += '💣';
+                    text += '_'.repeat(64 - (bombstep | 0));
+                }else{
+                    text += '_'.repeat(32);
+                    text += '🍝';
+                    text += '_'.repeat(32);
+                }
+            }else{
+                text += 'あなたは私に負けました。お疲れ様。';
+            }
+            bombpasta.textContent = text;
+            bombstep += 0.05;
+            requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+
+    </script>
 </body>
 </html>
