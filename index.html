@@ -37,6 +37,7 @@
                 }
             }else{
                 text += 'あなたは私に負けました。お疲れ様。';
+                lever.value = Math.random() * 2 | 0;
             }
             bombpasta.textContent = text;
             bombstep += 0.05;
